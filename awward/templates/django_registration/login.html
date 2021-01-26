@@ -1,0 +1,37 @@
+{% extends 'django_registration/base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block content %}
+<html>
+<body style="background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500') ;background-size:cover;background-repeat: no-repeat;background-position: center;background-origin: border-box; color:powderblue;font-family: 'Germania One', cursive;">
+<div class="container" style="margin-left: 40%; margin-top:10%">
+    <div class="row sign-up">
+        <div class="col-md-4">
+            {% if form.errors %}
+            <p class="small">Password or Username is incorrect</p>
+            {% endif %}
+            <div class="section">
+
+                <h1 style="text-align: center">AWWARDS</h1>
+                <h3>Login</h3>
+                <div class="form-section">
+                    <form action="/accounts/login/" method="POST">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary btn-sm" value="Sign In">
+                        </div>
+                        <input type="hidden" name="next" value="{{next}}">
+                    </form>
+                </div>
+            </div>
+            <div class="section">
+                <p>Don't have an account? <a href="/">Sign-Up</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}

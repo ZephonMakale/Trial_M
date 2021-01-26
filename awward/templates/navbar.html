@@ -1,0 +1,34 @@
+
+
+
+<nav class="navbar navbar-expand-sm bg-light navbar-light" style="background-color:#ffb5a7;">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'homePage' %}">AWWARDS</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/accounts/login/">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/accounts/register">Register</a>
+      </li>
+    </ul>
+   
+      {% if user.is_authenticated %}
+      <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'individual_profile_page' user.id %}">My Profile</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'new_project' %}">Submit Your Project</a>
+      </li>
+      <li class=nav-item>
+        <a class="nav-link" href="/logout">Logout</a>
+      </li>
+    </ul>
+
+      {% endif %}
+    
+  </nav> 

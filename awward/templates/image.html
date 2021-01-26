@@ -1,0 +1,95 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% load bootstrap4%} 
+
+{% block content %}
+
+<link href="https://fonts.googleapis.com/css?family=Germania+One" rel="stylesheet"> 
+
+<div class="container" style="font-family: 'Germania One', cursive;">
+
+  <div class="jumbotron text-center" style="background-color:brown;">
+
+    <h1 class="h1" style=" color:black;text-transform: uppercase">{{project.title}}'s project</h1>
+
+
+  </div>
+</div>
+
+<div class="container" style="font-family: 'Germania One', cursive;">
+<div class="card mb-3" style="width:40rem;;">
+  <img class="card-img-top" src="{{project.project_image.url}}" alt="Card image cap" class="img-fluid" size="100px200">
+  <div class="card-body">
+
+
+
+    <h5 class="card-title" ><strong>Project Name:</strong>
+      <br>
+      {{project.title}}</h5>
+    <p class="card-text" ><strong>Description Of Project:</strong>
+      <br>
+      {{project.description}}</p>
+  </div>
+
+  <div class="card border-secondary">
+     <div class="card-header">
+    
+       </div>
+
+
+     <div class="card-body text-primary">
+<h4>
+        {{ review.project.title }}
+        </h4>
+    {% for review in latest_review_list %}
+    <!-- <div>
+
+        <p style="color:black;">Comment by {{ review.user }}: {{ review.comment }}</p>
+    </div> -->
+
+
+    {% endfor %}
+
+          <h1 style="color:black;">RATE THE PROJECT</h1>
+
+
+<h5 >{{ project.reviews.count }} reviews ({{ project.average_design | floatformat }} average rating of design)</h5>
+<h5 >{{ project.reviews.count }} reviews ({{ project.average_content | floatformat }} average rating of content)</h5>
+<h5 >{{ project.reviews.count }} reviews ({{ project.average_usability | floatformat }} average rating of usability)</h5>
+
+
+  <hr>
+  <form action=""  method="post" style="font-family: 'Germania One', cursive;">
+    {%csrf_token%} {% bootstrap_form form %}
+      <input type="submit" class="btn btn-primary" value="Post">
+  </form>
+  <hr>
+
+</div>
+
+
+
+
+     </div>
+   </div>
+</div>
+</div>
+
+
+<div class="container">
+    <div class="col-md-12">
+      <div class="footer text-center">
+        <ul id="footer1">
+         
+
+          <li style="font-size:10px;"> <strong>© 2019 Umutoniwase Nancy
+
+          </strong></li>
+        </ul>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

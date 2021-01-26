@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+<link href="https://fonts.googleapis.com/css?family=Germania+One" rel="stylesheet">
+
+<div class="container" style="font-family: 'Germania One', cursive;">
+
+  <div class="jumbotron text-center mb-0" id="jumbo" style="background-color:#A59132">
+
+    <h1 class="h1" style="font-size:100px;text-transform: uppercase" >Awwards</h1>
+    <p class="h1" style=>View projects, submit your own projects and have them reviewed.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row"></div>
+<div class="col-6" style="margin:20px">
+
+
+ 
+    {% for project in projects %}
+    <div class ="card" style="margin: 20px">
+    <div class="card-block" style="background-color: bisque;margin:20px;font-family: 'Germania One', cursive"><a href="{% url 'project' project.id %}">
+
+        <img src="{{project.project_image.url}}" data-target="#imageModal{{project.id}}" data-toggle="modal" alt="" class="img-fluid"
+          id="eachimage1" size="100px200"></a>
+      <p > {{ project.description}}</p>
+     <p > {{ project.user.username}}</p>
+     <span class="badge badge-pill badge-info" style="font-family: 'Germania One', cursive; font-size: 20px">
+       <a href="{{ project.project_url}}">Visit Site</a></span>
+     
+  <span class="badge badge-pill badge-warning" style="font-family:'Germania One', cursive ; text-align:center; font-size: 20px"><a href="{% url 'project' project.id %}">View Project</a></span>
+
+    </div>
+    {% endfor %}
+  </div>
+  </div>
+
+</div>
+</div>
+
+<!-- <div class="jumbotron text-center mt-3" style="background-color:white;font-family: 'Dosis', sans-serif;">
+
+  <form action="{%url 'homePage'%}" method="post">
+    {%csrf_token%} {% bootstrap_form letterForm %}
+    <input type="submit" style="background-color:white;" value="Subscribe To Awards ">
+  </form>
+
+</div> -->
+
+
+<div class="container">
+  <div class="col-md-12">
+    <div class="footer text-center">
+      <ul id="footer1">
+        
+        <li style="font-size:10px;color:blanchedalmond"> <strong>© January 2021 Marah</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {% block scripts %} {{block.super}}
+<script type="text/javascript" src="{%static 'js/scripts.js'%}"></script>
+
+{% endblock %}
+</body>
+

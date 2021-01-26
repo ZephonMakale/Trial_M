@@ -1,0 +1,46 @@
+{%extends "django_registration/base.html"%}
+{% load bootstrap4 %}
+{%load static%}
+{% block content %}
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>New Project</title>
+  {{form.media}}
+
+{% block styles %}
+    {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}"> 
+  <link href="https://fonts.googleapis.com/css?family=Germania+One" rel="stylesheet">
+  {% endblock %} 
+</head>
+
+<body  style="background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500') ;background-size:cover;background-repeat: no-repeat;background-position: center;background-origin: border-box; color:powderblue;font-family: 'Germania One', cursive;">
+       <H1 style="text-align:center">ADD NEW PROJECT</H1>
+       
+ 
+  <div class="container">
+
+     <div class="row">
+
+
+  <form  action="{%url 'new_project'%}" method="post"  style="font-family: 'Germania One', cursive;" enctype="multipart/form-data">
+    {%csrf_token%}
+
+    {% bootstrap_form form%}
+    <input id="id_myfield" type="submit" class="btn btn-success btn-lg" value="Post">
+  </form>
+
+   {% block scripts %}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% bootstrap_javascript %} {% endblock %}
+
+
+     </div>
+</div>
+</body>
+{% endblock %}

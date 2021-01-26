@@ -1,0 +1,4 @@
+Hello {{name}}
+
+Welcome to the  Awards Website!
+       You will get notifications for the new projects as soon as they are posted!!</h3>
